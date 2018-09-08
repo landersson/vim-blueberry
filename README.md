@@ -1,2 +1,4 @@
 # vim-blueberry
-Blueberry inspired color scheme for vim
+Blueberry inspired color scheme for vim.
+
+Work in progress...
