@@ -29,6 +29,7 @@ elseif s:contrast == "low"
         " Blueberry light
 
         let s:background = "d7d0cc"
+        let s:diffbackground = "c7c0bc"
         let s:blue = "3040a0"
         let s:brown = "605040"
         let s:comment = "797769"
@@ -38,7 +39,7 @@ elseif s:contrast == "low"
         let s:grey1 = "505050"
         let s:grey2 = "707070"
         let s:line = "282a2e"
-        let s:orange = "de935f"
+        let s:orange = "e05000"
         let s:purple = "78288e"
         let s:red = "a82010"
         let s:selection = "959eaa"
@@ -51,6 +52,7 @@ elseif s:contrast == "low"
         " Blueberry dark
 
         let s:background = "282828"
+        let s:diffbackground = "383838"
         let s:blue = "8090e0"
         let s:brown = "906050"
         let s:comment = "707070"
@@ -61,7 +63,7 @@ elseif s:contrast == "low"
         let s:grey2 = "808080"
         let s:line = "a12d00"
         let s:orange = "de935f"
-        let s:purple = "a880d8"
+        let s:purple = "a088d0"
         let s:red = "b04050"
         let s:selection = "405060"
         let s:steel = "8090b0"
@@ -285,7 +287,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 		endif
 	endfun
 
-	" Vim Highlighting
+	" Vim Syntax Highlighting
 	call <SID>X("Comment", s:comment, "", "")
 	call <SID>X("Conditional", s:blue, "", "none")
 	call <SID>X("Constant", s:purple, "", "")
@@ -325,13 +327,14 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
             call <SID>X("CtrlPMatch", "ffffff", "", "")
             call <SID>X("Cursor", "df0000", s:background, "reverse")
             call <SID>X("CursorLine", "e0e0e0", "505050", "none")          " ctrl-p selection etc
-            call <SID>X("ErrorMsg", "b03030", s:background, "")
+            call <SID>X("DiffAdd", "00ffff", s:grey2, "")
+            call <SID>X("ErrorMsg", "b02020", s:background, "")
             call <SID>X("FoldColumn", "", s:background, "")
             call <SID>X("LineNr", "707070", "c7c0bc", "")
             call <SID>X("MatchParen", "ff5010", "202020", "")
             call <SID>X("ModeMsg", "c04010", "", "")
-            call <SID>X("MoreMsg", "e0e0e0", "", "")
-            call <SID>X("Question", "e0e0e0", "", "")
+            call <SID>X("MoreMsg", s:grey2, "", "")
+            call <SID>X("Question", s:grey2, "", "")
             call <SID>X("Search", "c0c0c0", "303060", "")
             call <SID>X("StatusLine", "3f683f", "", "")
             call <SID>X("StatusLineNC", "484848", "c0c0c0", "")
@@ -339,27 +342,31 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
             call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
             call <SID>X("Title", "2f7fa7", "", "")
             call <SID>X("Todo", "d02000", s:background, "")
-            call <SID>X("WarningMsg", "805000", "", "")
+            call <SID>X("WarningMsg", s:orange, "", "")
+            call <SID>X("WildMenu", s:grey1, s:yellow, "")
             call <SID>X("qfError", "8f0000", "d0d0d0", "reverse")
             call <SID>X("qfLineNr", "d0d0d0", "", "")
         else
             call <SID>X("CtrlPMatch", "ffffff", "", "")
             call <SID>X("Cursor", "df0000", s:background, "reverse")
             call <SID>X("CursorLine", "e0e0e0", "505050", "none")          " ctrl-p selection etc
-            call <SID>X("FoldColumn", "", s:background, "")
+            call <SID>X("CursorLineNr", "df5060", "505050", "none")
+            call <SID>X("ErrorMsg", "e02020", s:background, "")
+            call <SID>X("FoldColumn", s:cyan, s:background, "")
             call <SID>X("LineNr", "606060", "323232", "")
             call <SID>X("MatchParen", "ff5010", "202020", "")
             call <SID>X("ModeMsg", "c04010", "", "")
-            call <SID>X("MoreMsg", "e0e0e0", "", "")
-            call <SID>X("Question", "e0e0e0", "", "")
+            call <SID>X("MoreMsg", s:grey1, "", "")
+            call <SID>X("Question", s:grey1, "", "")
             call <SID>X("Search", "c0c0c0", "303060", "")
-            call <SID>X("StatusLine", "4f7858", "", "")
+            call <SID>X("StatusLine", "4f7858", "000000", "")
             call <SID>X("StatusLineNC", "484848", "a0a0a0", "")
             call <SID>X("StatusLineTerm", "000000", "5f5f88", "")
             call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
             call <SID>X("Title", "5fafd7", "", "")
             call <SID>X("Todo", "d7d75f", s:background, "")
             call <SID>X("WarningMsg", "f08040", "", "")
+            call <SID>X("WildMenu", s:background, s:orange, "")
             call <SID>X("qfError", "8f0000", "d0d0d0", "reverse")
             call <SID>X("qfLineNr", "d0d0d0", "", "")
         endif
@@ -527,12 +534,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 
 	" Diff Highlighting
-    let s:diffbackground = "494e56"
 	call <SID>X("diffAdded", s:green, "", "")
 	call <SID>X("diffRemoved", s:red, "", "")
     call <SID>X("DiffAdd", s:green, s:diffbackground, "")
     call <SID>X("DiffDelete", s:red, s:diffbackground, "")
-    call <SID>X("DiffChange", s:yellow, s:diffbackground, "")
+    call <SID>X("DiffChange", s:orange, s:diffbackground, "")
     call <SID>X("DiffText", s:diffbackground, s:orange, "")
 
     " ShowMarks Highlighting
