@@ -20,6 +20,8 @@ let s:contrast="low"
 	"let s:selection = "585858"
 "end
 
+"grey2 = low contrast grey
+
 if s:contrast == "high"
 
 elseif s:contrast == "low"
@@ -29,31 +31,34 @@ elseif s:contrast == "low"
         " Blueberry light
 
         let s:background = "d7d0cc"
-        let s:diffbackground = "c7c0bc"
-        let s:blue = "3040a0"
-        let s:brown = "605040"
+        let s:background2 = "c7c0bc"
+        "let s:blue = "3040a0"
+        let s:blue = "3038a8"
+        let s:brown = "785040"
         let s:comment = "797769"
-        let s:cyan = "007080"
+        let s:cyan = "006878"
         let s:foreground = "363436"
         let s:green = "25682d"
-        let s:grey1 = "505050"
+        let s:grey1 = "505050"        
         let s:grey2 = "707070"
         let s:line = "282a2e"
-        let s:orange = "e05000"
+        let s:orange = "a04000"
         let s:purple = "78288e"
         let s:red = "a82010"
         let s:selection = "959eaa"
-        let s:steel = "304080"
-        let s:violet = "a03050"
+        let s:steel = "306090"
+        let s:violet = "a02050"
         let s:window = "a0a0a0"
         let s:yellow = "d0a654"
     else
 
         " Blueberry dark
 
-        let s:background = "282828"
-        let s:diffbackground = "383838"
-        let s:blue = "8090e0"
+        "let s:background = "282828"
+        "let s:background2 = "383838"
+        let s:background = "2c2c2c"
+        let s:background2 = "383838"
+        let s:blue = "7888d8"
         let s:brown = "906050"
         let s:comment = "707070"
         let s:cyan = "70a0b0"
@@ -62,12 +67,12 @@ elseif s:contrast == "low"
         let s:grey1 = "909090"
         let s:grey2 = "808080"
         let s:line = "a12d00"
-        let s:orange = "de935f"
+        let s:orange = "ee835f"
         let s:purple = "a088d0"
-        let s:red = "b04050"
+        let s:red = "bf5848"
         let s:selection = "405060"
-        let s:steel = "8090b0"
-        let s:violet = "c06080"
+        let s:steel = "8898b8"
+        let s:violet = "c06888"
         let s:window = "404040"
         let s:yellow = "d0a654"
     endif
@@ -305,7 +310,6 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Statement", s:blue, "", "none")
 	call <SID>X("String", s:green, "", "")
 	call <SID>X("Structure", s:blue, "", "")
-	call <SID>X("TabLine", s:foreground, s:background, "reverse")
 	call <SID>X("Terminal", s:grey1, "", "")
 	call <SID>X("Type", s:cyan, "", "none")
 	call <SID>X("VertSplit", s:window, s:window, "none")
@@ -314,10 +318,20 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("CursorColumn", "", s:line, "none")
     call <SID>X("Function", s:foreground , "", "")
     call <SID>X("Number", s:violet, "", "")
+    call <SID>X("Noise", s:grey2, "", "")
     call <SID>X("PMenu", s:foreground, s:selection, "none")        " completion menu entries
     call <SID>X("PMenuSel", s:foreground, s:selection, "reverse") 
     call <SID>X("Repeat", s:blue, "", "")
-    call <SID>X("SignColumn", "", s:background, "none")
+    call <SID>X("SignColumn", s:red, s:background, "none")
+
+    call <SID>X("Cursor", s:red, s:background, "reverse")
+    call <SID>X("CursorLine", "e0e0e0", "505050", "none")          " ctrl-p selection etc
+    call <SID>X("WildMenu", s:background, s:orange, "bold")
+    call <SID>X("MoreMsg", s:grey1, "", "")
+    call <SID>X("Question", s:grey1, "", "")
+    "call <SID>X("ErrorMsg", "f05050", s:background, "bold")
+    call <SID>X("ErrorMsg", s:red, s:background, "bold")
+    call <SID>X("ModeMsg", s:violet, "", "")
 
     if (s:contrast == "high")
         " TODO
@@ -325,50 +339,56 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     else
         if &background == "light"
             call <SID>X("CtrlPMatch", "ffffff", "", "")
-            call <SID>X("Cursor", "df0000", s:background, "reverse")
-            call <SID>X("CursorLine", "e0e0e0", "505050", "none")          " ctrl-p selection etc
             call <SID>X("DiffAdd", "00ffff", s:grey2, "")
-            call <SID>X("ErrorMsg", "b02020", s:background, "")
             call <SID>X("FoldColumn", "", s:background, "")
-            call <SID>X("LineNr", "707070", "c7c0bc", "")
+            call <SID>X("LineNr", s:grey2, s:background2, "")
             call <SID>X("MatchParen", "ff5010", "202020", "")
-            call <SID>X("ModeMsg", "c04010", "", "")
-            call <SID>X("MoreMsg", s:grey2, "", "")
-            call <SID>X("Question", s:grey2, "", "")
-            call <SID>X("Search", "c0c0c0", "303060", "")
+            "call <SID>X("Search", s:foreground, s:window, "")
+            call <SID>X("Search", "000000", "b7b0bc", "")
             call <SID>X("StatusLine", "3f683f", "", "")
-            call <SID>X("StatusLineNC", "484848", "c0c0c0", "")
+            call <SID>X("StatusLineNC", s:grey1, s:background, "")
             call <SID>X("StatusLineTerm", "000000", "3f683f", "")
             call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
             call <SID>X("Title", "2f7fa7", "", "")
-            call <SID>X("Todo", "d02000", s:background, "")
+            call <SID>X("Title", s:steel, "", "")
+            call <SID>X("Todo", s:orange, s:background, "")
             call <SID>X("WarningMsg", s:orange, "", "")
-            call <SID>X("WildMenu", s:grey1, s:yellow, "")
-            call <SID>X("qfError", "8f0000", "d0d0d0", "reverse")
-            call <SID>X("qfLineNr", "d0d0d0", "", "")
+            call <SID>X("qfError", s:violet, "d0d0d0", "reverse")
+            call <SID>X("qfLineNr", s:cyan, s:background, "")
+            call <SID>X("TabLine", s:grey1, s:background2, "reverse")
+            call <SID>X("TabLineSel", s:steel, s:background, "reverse")
+            call <SID>X("TabLineFill", s:grey2, s:foreground, "reverse")
+
+            if !has("gui_running")
+                call <SID>X("SpellBad", "ffffff", "bf0000", "")
+            end
         else
             call <SID>X("CtrlPMatch", "ffffff", "", "")
             call <SID>X("Cursor", "df0000", s:background, "reverse")
             call <SID>X("CursorLine", "e0e0e0", "505050", "none")          " ctrl-p selection etc
             call <SID>X("CursorLineNr", "df5060", "505050", "none")
-            call <SID>X("ErrorMsg", "e02020", s:background, "")
             call <SID>X("FoldColumn", s:cyan, s:background, "")
             call <SID>X("LineNr", "606060", "323232", "")
             call <SID>X("MatchParen", "ff5010", "202020", "")
-            call <SID>X("ModeMsg", "c04010", "", "")
-            call <SID>X("MoreMsg", s:grey1, "", "")
-            call <SID>X("Question", s:grey1, "", "")
-            call <SID>X("Search", "c0c0c0", "303060", "")
-            call <SID>X("StatusLine", "4f7858", "000000", "")
+            call <SID>X("Search", "b8b8b8", "404060", "")
+            call <SID>X("StatusLine", "4f7858", "000000", "reverse,bold")
             call <SID>X("StatusLineNC", "484848", "a0a0a0", "")
             call <SID>X("StatusLineTerm", "000000", "5f5f88", "")
             call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
-            call <SID>X("Title", "5fafd7", "", "")
+            call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
+            call <SID>X("Title", s:cyan, "", "")
             call <SID>X("Todo", "d7d75f", s:background, "")
             call <SID>X("WarningMsg", "f08040", "", "")
-            call <SID>X("WildMenu", s:background, s:orange, "")
-            call <SID>X("qfError", "8f0000", "d0d0d0", "reverse")
-            call <SID>X("qfLineNr", "d0d0d0", "", "")
+            call <SID>X("qfError", "8f0000", "c0c0c0", "reverse")
+            call <SID>X("qfLineNr", "c0c0c0", "", "")
+            call <SID>X("TabLine", "303030", "707070", "reverse")
+            call <SID>X("TabLineSel", "283870", "888888", "reverse")
+            call <SID>X("TabLineFill", s:background2, s:background, "reverse")
+
+
+            if !has("gui_running")
+                call <SID>X("SpellBad", "000000", "bf0000", "")
+            end
         endif
     endif
 
@@ -443,7 +463,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("pythonBuiltin", s:purple, "", "")
 	call <SID>X("pythonInclude", s:purple, "", "")
     call <SID>X("pythonDecoratorName", s:red, "", "")
-    call <SID>X("pythonFunction", s:cyan, "", "")
+    call <SID>X("pythonFunction", s:foreground, "", "bold")
     call <SID>X("pythonSelf", s:grey2, "", "")
 
 
@@ -455,23 +475,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("javaScriptRepeat", s:purple, "", "")
 	call <SID>X("javaScriptNumber", s:orange, "", "")
 	call <SID>X("javaScriptMember", s:orange, "", "")
-    call <SID>X("jsThis", "a0a0a0", "", "")
+    call <SID>X("jsThis", s:grey1, "", "")
     hi link jsNumber Number
-    call <SID>X("jsOperator", "d0d0d0", "", "")
-	"call <SID>X("jsFunction", "8080e0", "", "")
+    hi link jsOperator Operator
 
-
-	" HTML Highlighting
-	"call <SID>X("htmlTag", "c0c0c0", "", "")
-	"call <SID>X("htmlEndTag", "c0c0c0", "", "")
-	"call <SID>X("htmlTitle", "c050c0", "", "")
-	"call <SID>X("htmlH1", "ff5050", "", "")
-	"call <SID>X("htmlValue", "d060a0", "", "")
-    "call <SID>X("htmlTagName", "8090ff", "", "")
-    "call <SID>X("htmlSpecialTagName", "d06090", "", "")
-    "hi link htmlTagName Statement
-	"call <SID>X("htmlArg", "60b0f0", "", "")
-	"call <SID>X("htmlScriptTag", "d0d0d0", "", "")
 	" Go Highlighting
 	"call <SID>X("goStatement", s:purple, "", "")
 	"call <SID>X("goConditional", s:purple, "", "")
@@ -485,61 +492,31 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("coffeeKeyword", s:purple, "", "")
 	call <SID>X("coffeeConditional", s:purple, "", "")
 
-    "
-    " Rust highlighting
-    " Hardcoded, rusty look
-    "
-    "call <SID>X("rustString", "80af80", "", "")
-    "call <SID>X("rustSelf", "9e9e9e", "", "")
-    "call <SID>X("rustModPath",   "9e9e9e", "", "")
-    "call <SID>X("rustModPathSep",   "87af85", "", "")
-    "call <SID>X("rustStorage", "ff9330", "", "")
-    "call <SID>X("rustKeyword", "b98053", "", "")
-    "call <SID>X("rustIdentifier", "e9a073", "", "")
-    "call <SID>X("rustConditional", "b98053", "", "")
-    "call <SID>X("rustMacro",       "d06050 ", "", "")
-    "call <SID>X("rustOperator",       "e0e0e0", "", "")
-    "call <SID>X("rustAttribute",       "a0a0a0", "", "")
-    "call <SID>X("rustDerive",       "a0a0a0", "", "")
-    "call <SID>X("rustSigil",       "e0e0e0", "", "")
-    "call <SID>X("rustFloat",       "f4e1d4", "", "")
-    ""call <SID>X("rustDecNumber",       "f4e1d4", "", "")
-    "call <SID>X("rustDecNumber",       "80a0d0", "", "")
-    "call <SID>X("rustFloat",       "80a0d0", "", "")
-    "call <SID>X("rustEnum",       "e8a820", "", "")
-    "call <SID>X("rustEnumVariant",       "e8a820", "", "")
-    "call <SID>X("rustType",       "d06030", "", "")
-    "call <SID>X("rustTypeDef",       "d06030", "", "")
-    "call <SID>X("rustRepeat", "b98053", "", "")
-    ""call <SID>X("rustRepeat",       "80afd7", "", "")
-    ""call <SID>X("rustBoolean",       "f4e1d4", "", "")
-    "call <SID>X("rustBoolean",       "80a0d0", "", "")
-    "call <SID>X("rustStructure",       "87af87", "", "")
-    "call <SID>X("rustLifeTime", "70b0d0", "", "")
-    "call <SID>X("rustFuncCall", "a0a0a0", "", "")
-    "call <SID>X("rustFunction", "d7af87", "", "")
-    "call <SID>X("rustFuncName", "d7af87", "", "")
-
     "hi link rustMacro Normal
     hi link rustDecNumber Number
     hi link rustFuncCall Normal
     hi link rustFuncName Function
     hi link rustKeyword Statement
     hi link rustModPath Normal
+    hi link rustModPathSep Normal
     hi link rustOperator Normal
     hi link rustString String
 
     call <SID>X("rustEnumVariant", s:grey1, "", "")
+    call <SID>X("rustFuncName", s:foreground, "", "bold")
+    call <SID>X("rustModPathSep",   s:steel, "", "")
     call <SID>X("rustMacro", s:red, "", "")
 
 
 	" Diff Highlighting
 	call <SID>X("diffAdded", s:green, "", "")
 	call <SID>X("diffRemoved", s:red, "", "")
-    call <SID>X("DiffAdd", s:green, s:diffbackground, "")
-    call <SID>X("DiffDelete", s:red, s:diffbackground, "")
-    call <SID>X("DiffChange", s:orange, s:diffbackground, "")
-    call <SID>X("DiffText", s:diffbackground, s:orange, "")
+    call <SID>X("DiffAdd", s:green, s:background2, "")
+    call <SID>X("DiffDelete", s:red, s:background2, "none")
+    call <SID>X("DiffChange", s:orange, s:background2, "")
+    "call <SID>X("DiffText", s:orange, "000000", "reverse")
+    "call <SID>X("DiffText", "d0d0d0", "ae431f", "none")
+    call <SID>X("DiffText", "d0d0d0", s:brown, "none")
 
     " ShowMarks Highlighting
     call <SID>X("ShowMarksHLl", s:orange, s:background, "none")
