@@ -35,10 +35,10 @@ elseif s:contrast == "low"
         "let s:blue = "3040a0"
         let s:blue = "3038a8"
         let s:brown = "785040"
-        let s:comment = "797769"
-        let s:cyan = "006878"
+        let s:comment = "737163"
+        let s:cyan = "006070"
         let s:foreground = "363436"
-        let s:green = "25682d"
+        let s:green = "206328"
         let s:grey1 = "505050"        
         let s:grey2 = "707070"
         let s:line = "282a2e"
@@ -46,7 +46,7 @@ elseif s:contrast == "low"
         let s:purple = "78288e"
         let s:red = "a82010"
         let s:selection = "959eaa"
-        let s:steel = "306090"
+        let s:steel = "305080"
         let s:violet = "a02050"
         let s:window = "a0a0a0"
         let s:yellow = "d0a654"
@@ -329,9 +329,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("WildMenu", s:background, s:orange, "bold")
     call <SID>X("MoreMsg", s:grey1, "", "")
     call <SID>X("Question", s:grey1, "", "")
-    "call <SID>X("ErrorMsg", "f05050", s:background, "bold")
     call <SID>X("ErrorMsg", s:red, s:background, "bold")
     call <SID>X("ModeMsg", s:violet, "", "")
+    call <SID>X("Underlined", s:blue, "", "")
+
 
     if (s:contrast == "high")
         " TODO
@@ -501,6 +502,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     hi link rustModPathSep Normal
     hi link rustOperator Normal
     hi link rustString String
+    hi link rustCommentLineDoc Comment
 
     call <SID>X("rustEnumVariant", s:grey1, "", "")
     call <SID>X("rustFuncName", s:foreground, "", "bold")
@@ -523,6 +525,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("ShowMarksHLo", s:purple, s:background, "none")
     call <SID>X("ShowMarksHLu", s:yellow, s:background, "none")
     "call <SID>X("ShowMarksHLm", s:aqua, s:background, "none")
+
+    hi link markdownError Normal
 
 	" Delete Functions
 	delf <SID>X
