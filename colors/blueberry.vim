@@ -529,6 +529,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
     hi link markdownError Normal
 
+    call <SID>X("xmlTagName", s:steel, "", "none")
+    call <SID>X("xmlEndTag", s:steel, "", "none")
+    call <SID>X("xmlEntity", s:purple, "", "none")
+    call <SID>X("xmlDocTypeKeyword", s:violet, "", "none")
+
 	" Delete Functions
 	delf <SID>X
 	delf <SID>rgb
