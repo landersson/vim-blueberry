@@ -4,13 +4,8 @@
 "
 " Hex colour conversion functions borrowed from the theme "Desert256""
 
-let s:contrast="low"
-"let s:contrast="high"   Not yet added
+let s:contrast=""
 
-"if (match(system("cat /etc/issue"), "SUbuntu") != -1)
-	"let s:contrast = "high"
-    "let s:line = "a12d00"
-"endif
 
 " Console 256 Colours
 "if !has("gui_running")
@@ -22,68 +17,84 @@ let s:contrast="low"
 
 "grey2 = low contrast grey
 
-if s:contrast == "high"
+if &background == "light"
 
-elseif s:contrast == "low"
+    " Blueberry light
 
-    if &background == "light"
+    let s:background = "d7d0cc"
+    let s:background2 = "c7c0bc"
+    "let s:blue = "3040a0"
+    let s:blue = "3038a8"
+    let s:brown = "785040"
+    "let s:comment = "737163"
+    let s:comment = "506070"
+    let s:cyan = "006070"
+    let s:foreground = "2a282a"
+    "let s:foreground = "363436"
+    let s:foreground2 = "161416"
+    let s:green = "006018"
+    let s:grey1 = "505050"        
+    let s:grey2 = "707070"
+    let s:line = "282a2e"
+    let s:orange = "a04000"
+    let s:purple = "78288e"
+    let s:red = "981010"
+    let s:selection = "959eaa"
+    let s:steel = "305080"
+    let s:violet = "a02050"
+    let s:window = "a0a0a0"
+    let s:yellow = "905000"
+else
 
-        " Blueberry light
+    " Blueberry dark
 
-        let s:background = "d7d0cc"
-        let s:background2 = "c7c0bc"
-        "let s:blue = "3040a0"
-        let s:blue = "3038a8"
-        let s:brown = "785040"
-        "let s:comment = "737163"
-        let s:comment = "506070"
-        let s:cyan = "006070"
-        let s:foreground = "363436"
-        let s:green = "206328"
-        let s:grey1 = "505050"        
-        let s:grey2 = "707070"
-        let s:line = "282a2e"
-        let s:orange = "a04000"
-        let s:purple = "78288e"
-        let s:red = "a82010"
-        let s:selection = "959eaa"
-        let s:steel = "305080"
-        let s:violet = "a02050"
-        let s:window = "a0a0a0"
-        let s:yellow = "d0a654"
+    if s:contrast == "high"
+        let s:background = "282828"
+        let s:background2 = "303030"
+    elseif s:contrast == "low"
+
     else
-
-        " Blueberry dark
-
-        "let s:background = "282828"
-        "let s:background2 = "383838"
         let s:background = "2c2c2c"
         let s:background2 = "383838"
-        let s:blue = "7888d8"
-        let s:brown = "906050"
-        let s:comment = "707070"
-        let s:cyan = "70a0b0"
-        let s:foreground = "a0a0a0"
-        let s:green = "608870"
-        let s:grey1 = "909090"
-        let s:grey2 = "808080"
-        let s:line = "a12d00"
-        let s:orange = "ee835f"
-        let s:purple = "a088d0"
-        let s:red = "bf5848"
-        let s:selection = "405060"
-        let s:steel = "8898b8"
-        let s:violet = "c06888"
-        let s:window = "404040"
-        let s:yellow = "d0a654"
     endif
-else
-    "let s:background = "ff0000"  " not implemented
+
+    let s:blue = "6890d8"
+    let s:brown = "906050"
+    let s:comment = "707070"
+    let s:cyan = "50a4b4"
+    let s:foreground = "a0a0a0"
+    let s:foreground2 = "b8b8b8"
+    let s:green = "609070"
+    let s:grey1 = "909090"
+    let s:grey2 = "808080"
+    let s:line = "a12d00"
+    let s:orange = "ee835f"
+    let s:purple = "a088d0"
+    let s:red = "bf5848"
+    let s:selection = "405060"
+    let s:steel = "8898b8"
+    let s:violet = "c06888"
+    let s:window = "404040"
+    let s:yellow = "d0a654"
 endif
 
 hi clear
 syntax reset
 let g:colors_name = "blueberry"
+
+" Colors for builtin terminal
+" Black,  Red,    Green,  Yellow,
+" Blue,   Purple, Cyan,   White
+let g:terminal_ansi_colors = [
+            \ "#".s:background, "#".s:red, "#".s:green, "#".s:yellow,
+            \ "#".s:blue, "#".s:purple, "#".s:cyan, "#".s:foreground,   
+            \ "#".s:foreground2, "#".s:red, "#".s:green, "#".s:yellow,
+            \ "#".s:blue, "#".s:purple, "#".s:cyan, "#".s:foreground ]   
+            "\ "#000000", "#000000", "#000000", "#000000",
+            "\ "#000000", "#000000", "#000000", "#000000" ]
+
+            "\ "#009090", "#b84050", "#309040", "#c09010",
+            "\ "#5080f0", "#c070d0", "#30c0c0", "#00c0c0" ]
 
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Returns an approximate grey index for the given grey level
@@ -95,7 +106,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 				return 1
 			elseif a:x < 103
 				return 2
-			elseif a:x < 127
+			lseif a:x < 127
 				return 3
 			elseif a:x < 150
 				return 4
@@ -311,7 +322,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Statement", s:blue, "", "none")
 	call <SID>X("String", s:green, "", "")
 	call <SID>X("Structure", s:blue, "", "")
-	call <SID>X("Terminal", s:grey1, "", "")
+	call <SID>X("Terminal", s:foreground, "", "")
 	call <SID>X("Type", s:cyan, "", "none")
 	call <SID>X("VertSplit", s:window, s:window, "none")
 	call <SID>X("Visual", "", s:selection, "")
@@ -335,63 +346,58 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("Underlined", s:blue, "", "")
 
 
-    if (s:contrast == "high")
-        " TODO
-        call <SID>X("LineNr", "505050", "181818", "")
+    if &background == "light"
+        call <SID>X("CtrlPMatch", "ffffff", "", "")
+        call <SID>X("DiffAdd", "00ffff", s:grey2, "")
+        call <SID>X("FoldColumn", "", s:background, "")
+        call <SID>X("LineNr", s:grey2, s:background2, "")
+        call <SID>X("MatchParen", "ff5010", "202020", "")
+        "call <SID>X("Search", s:foreground, s:window, "")
+        call <SID>X("Search", "000000", "b7b0bc", "")
+        call <SID>X("StatusLine", "3f683f", "", "")
+        call <SID>X("StatusLineNC", s:grey1, s:background, "")
+        "call <SID>X("StatusLineNC", s:red, s:background, "")
+        call <SID>X("StatusLineTerm", s:background, "3f683f", "")
+        call <SID>X("StatusLineTermNC", "d0d0d0", "484848", "")
+        call <SID>X("Title", "2f7fa7", "", "")
+        call <SID>X("Title", s:steel, "", "")
+        call <SID>X("Todo", s:orange, s:background, "")
+        call <SID>X("WarningMsg", s:orange, "", "")
+        call <SID>X("qfError", s:violet, "d0d0d0", "reverse")
+        call <SID>X("qfLineNr", s:cyan, s:background, "")
+        call <SID>X("TabLine", s:grey1, s:background2, "reverse")
+        call <SID>X("TabLineSel", s:steel, s:background, "reverse")
+        call <SID>X("TabLineFill", s:grey2, s:foreground, "reverse")
+
+        if !has("gui_running")
+            call <SID>X("SpellBad", "ffffff", "bf0000", "")
+        end
     else
-        if &background == "light"
-            call <SID>X("CtrlPMatch", "ffffff", "", "")
-            call <SID>X("DiffAdd", "00ffff", s:grey2, "")
-            call <SID>X("FoldColumn", "", s:background, "")
-            call <SID>X("LineNr", s:grey2, s:background2, "")
-            call <SID>X("MatchParen", "ff5010", "202020", "")
-            "call <SID>X("Search", s:foreground, s:window, "")
-            call <SID>X("Search", "000000", "b7b0bc", "")
-            call <SID>X("StatusLine", "3f683f", "", "")
-            call <SID>X("StatusLineNC", s:grey1, s:background, "")
-            call <SID>X("StatusLineTerm", "000000", "3f683f", "")
-            call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
-            call <SID>X("Title", "2f7fa7", "", "")
-            call <SID>X("Title", s:steel, "", "")
-            call <SID>X("Todo", s:orange, s:background, "")
-            call <SID>X("WarningMsg", s:orange, "", "")
-            call <SID>X("qfError", s:violet, "d0d0d0", "reverse")
-            call <SID>X("qfLineNr", s:cyan, s:background, "")
-            call <SID>X("TabLine", s:grey1, s:background2, "reverse")
-            call <SID>X("TabLineSel", s:steel, s:background, "reverse")
-            call <SID>X("TabLineFill", s:grey2, s:foreground, "reverse")
-
-            if !has("gui_running")
-                call <SID>X("SpellBad", "ffffff", "bf0000", "")
-            end
-        else
-            call <SID>X("CtrlPMatch", "ffffff", "", "")
-            call <SID>X("Cursor", "df0000", s:background, "reverse")
-            call <SID>X("CursorLine", "e0e0e0", "505050", "none")          " ctrl-p selection etc
-            call <SID>X("CursorLineNr", "df5060", "505050", "none")
-            call <SID>X("FoldColumn", s:cyan, s:background, "")
-            call <SID>X("LineNr", "606060", "323232", "")
-            call <SID>X("MatchParen", "ff5010", "202020", "")
-            call <SID>X("Search", "b8b8b8", "404060", "")
-            call <SID>X("StatusLine", "4f7858", "000000", "reverse,bold")
-            call <SID>X("StatusLineNC", "484848", "a0a0a0", "")
-            call <SID>X("StatusLineTerm", "000000", "5f5f88", "")
-            call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
-            call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
-            call <SID>X("Title", s:cyan, "", "")
-            call <SID>X("Todo", "d7d75f", s:background, "")
-            call <SID>X("WarningMsg", "f08040", "", "")
-            call <SID>X("qfError", "8f0000", "c0c0c0", "reverse")
-            call <SID>X("qfLineNr", "c0c0c0", "", "")
-            call <SID>X("TabLine", "303030", "707070", "reverse")
-            call <SID>X("TabLineSel", "283870", "888888", "reverse")
-            call <SID>X("TabLineFill", s:background2, s:background, "reverse")
+        call <SID>X("CtrlPMatch", "ffffff", "", "")
+        call <SID>X("Cursor", "df0000", s:background, "reverse")
+        call <SID>X("CursorLine", "e0e0e0", "505050", "none")          " ctrl-p selection etc
+        call <SID>X("CursorLineNr", "df5060", "505050", "none")
+        call <SID>X("FoldColumn", s:cyan, s:background, "")
+        call <SID>X("LineNr", "606060", "323232", "")
+        call <SID>X("MatchParen", "ff5010", "202020", "")
+        call <SID>X("Search", "b8b8b8", "404060", "")
+        call <SID>X("StatusLine", "4f7858", "000000", "reverse,bold")
+        call <SID>X("StatusLineNC", "484848", "a0a0a0", "")
+        call <SID>X("StatusLineTerm", "000000", "4f7858", "")
+        call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
+        call <SID>X("Title", s:cyan, "", "")
+        call <SID>X("Todo", "d7d75f", s:background, "")
+        call <SID>X("WarningMsg", "f08040", "", "")
+        call <SID>X("qfError", "8f0000", "c0c0c0", "reverse")
+        call <SID>X("qfLineNr", "c0c0c0", "", "")
+        call <SID>X("TabLine", "303030", "707070", "reverse")
+        call <SID>X("TabLineSel", "283870", "888888", "reverse")
+        call <SID>X("TabLineFill", s:background2, s:background, "reverse")
 
 
-            if !has("gui_running")
-                call <SID>X("SpellBad", "000000", "bf0000", "")
-            end
-        endif
+        if !has("gui_running")
+            call <SID>X("SpellBad", "000000", "bf0000", "")
+        end
     endif
 
 
@@ -443,7 +449,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 
 	" Python Highlighting
-	""call <SID>X("pythonOperator", "c080c0", "", "")
+	call <SID>X("pythonOperator", s:cyan, "", "")
 	"call <SID>X("PythonStatement", "8090ff", "", "")
 	"call <SID>X("pythonConditional", "8090ff", "", "")
 	"call <SID>X("pythonException", "c06080", "", "")
@@ -456,6 +462,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     "call <SID>X("pythonNumber", "e06080", "", "")
 
     "hi link pythonFunction Function
+    
     hi link PythonNumber Number
     hi link Repeat Statement
     hi link pythonConditional Conditional
