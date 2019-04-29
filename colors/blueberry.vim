@@ -32,19 +32,21 @@ if &background == "light"
     let s:foreground = "2a282a"
     "let s:foreground = "363436"
     let s:foreground2 = "161416"
-    let s:green = "006018"
+    "let s:green = "006018"
+    let s:green = "486000"
     let s:grey1 = "505050"        
     let s:grey2 = "707070"
     let s:line = "282a2e"
-    let s:orange = "a04000"
+    let s:orange = "904000"
     let s:purple = "78288e"
     let s:red = "981010"
     let s:selection = "959eaa"
-    let s:steel = "305080"
+    let s:steel = "204888"
     let s:violet = "a02050"
     let s:window = "a0a0a0"
     let s:yellow = "905000"
 else
+    " TODO: 
 
     " Blueberry dark
 
@@ -354,7 +356,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         call <SID>X("MatchParen", "ff5010", "202020", "")
         "call <SID>X("Search", s:foreground, s:window, "")
         call <SID>X("Search", "000000", "b7b0bc", "")
-        call <SID>X("StatusLine", "3f683f", "", "")
+        call <SID>X("StatusLine", "3f683f", "e7e0cc", "reverse")
         call <SID>X("StatusLineNC", s:grey1, s:background, "")
         "call <SID>X("StatusLineNC", s:red, s:background, "")
         call <SID>X("StatusLineTerm", s:background, "3f683f", "")
@@ -400,6 +402,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         end
     endif
 
+	call <SID>X("EasyMotionTarget", "f00000", "", "bold")
+	call <SID>X("EasyMotionTarget2First", "009000", "", "bold")
+	call <SID>X("EasyMotionTarget2Second", "009000", "", "bold")
+	"call <SID>X("EasyMotionTarget", "f00000", "", "reverse")
+	"call <SID>X("EasyMotionTarget2First", "608000", "", "reverse")
+	"call <SID>X("EasyMotionTarget2Second", "008046", "", "reverse")
 
     " VimScript Highlighting 
     "call <SID>X("VimParenSep", s:foreground2, "", "")
