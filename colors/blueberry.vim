@@ -28,12 +28,12 @@ if &background == "light"
     let s:brown = "785040"
     "let s:comment = "737163"
     let s:comment = "506070"
-    let s:cyan = "006070"
+    let s:cyan = "006060"
     let s:foreground = "2a282a"
     "let s:foreground = "363436"
     let s:foreground2 = "161416"
-    "let s:green = "006018"
-    let s:green = "486000"
+    let s:green = "006018"
+    "let s:green = "486000"
     let s:grey1 = "505050"        
     let s:grey2 = "707070"
     let s:line = "282a2e"
@@ -63,7 +63,7 @@ else
     let s:blue = "6890d8"
     let s:brown = "906050"
     let s:comment = "707070"
-    let s:cyan = "50a4b4"
+    let s:cyan = "55a0b0"
     let s:foreground = "a0a0a0"
     let s:foreground2 = "b8b8b8"
     let s:green = "609070"
@@ -315,7 +315,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("FoldColumn", "", s:background, "")
 	call <SID>X("Folded", s:comment, s:background, "")
 	call <SID>X("Identifier", s:steel, "", "none")
-	call <SID>X("Include", s:brown, "", "")
+	call <SID>X("Include", s:steel, "", "")
 	call <SID>X("NonText", s:selection, "", "")
 	call <SID>X("Normal", s:foreground, s:background, "")
 	call <SID>X("PreProc", s:red, "", "")
@@ -457,7 +457,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 
 	" Python Highlighting
-	call <SID>X("pythonOperator", s:cyan, "", "")
+    call <SID>X("pythonOperator", s:blue, "", "")
+	call <SID>X("pythonAttribute", s:steel, "", "")
 	"call <SID>X("PythonStatement", "8090ff", "", "")
 	"call <SID>X("pythonConditional", "8090ff", "", "")
 	"call <SID>X("pythonException", "c06080", "", "")
@@ -478,10 +479,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     hi link pythonStatement Statement
  
 	call <SID>X("pythonBuiltin", s:purple, "", "")
-	call <SID>X("pythonInclude", s:purple, "", "")
+	call <SID>X("pythonInclude", s:cyan, "", "")
     call <SID>X("pythonDecoratorName", s:red, "", "")
     call <SID>X("pythonFunction", s:foreground, "", "bold")
-    call <SID>X("pythonSelf", s:grey2, "", "")
+    "call <SID>X("pythonSelf", s:orange, "", "")
 
 
 	" JavaScript Highlighting
