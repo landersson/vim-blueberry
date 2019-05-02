@@ -461,7 +461,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("pythonAttribute", s:steel, "", "")
 	"call <SID>X("PythonStatement", "8090ff", "", "")
 	"call <SID>X("pythonConditional", "8090ff", "", "")
-	"call <SID>X("pythonException", "c06080", "", "")
+    call <SID>X("pythonExceptions", s:violet, "", "")
 	"call <SID>X("pythonExceptions", "f07080", "", "")
 	"call <SID>X("pythonInclude", "7080ff", "", "")
 	"call <SID>X("pythonOperator", "8090ff", "", "")
