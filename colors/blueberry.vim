@@ -361,7 +361,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         "call <SID>X("StatusLineNC", s:red, s:background, "")
         call <SID>X("StatusLineTerm", s:background, "3f683f", "")
         call <SID>X("StatusLineTermNC", "d0d0d0", "484848", "")
-        call <SID>X("Title", "2f7fa7", "", "")
+        "call <SID>X("Title", "2f7fa7", "", "")
         call <SID>X("Title", s:steel, "", "")
         call <SID>X("Todo", s:orange, s:background, "")
         call <SID>X("WarningMsg", s:orange, "", "")
@@ -383,8 +383,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         call <SID>X("LineNr", "606060", "323232", "")
         call <SID>X("MatchParen", "ff5010", "202020", "")
         call <SID>X("Search", "b8b8b8", "404060", "")
-        call <SID>X("StatusLine", "4f7858", "000000", "reverse,bold")
-        call <SID>X("StatusLineNC", "484848", "a0a0a0", "")
+        call <SID>X("StatusLine", "4f7858", "f0e0d0", "reverse,bold")
+        call <SID>X("StatusLineNC", "484848", "c0c0c0", "")
         call <SID>X("StatusLineTerm", "000000", "4f7858", "")
         call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
         call <SID>X("Title", s:cyan, "", "")
@@ -458,7 +458,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" Python Highlighting
     call <SID>X("pythonOperator", s:blue, "", "")
-	call <SID>X("pythonAttribute", s:steel, "", "")
+	"call <SID>X("pythonAttribute", s:steel, "", "")
 	"call <SID>X("PythonStatement", "8090ff", "", "")
 	"call <SID>X("pythonConditional", "8090ff", "", "")
     call <SID>X("pythonExceptions", s:violet, "", "")
@@ -482,7 +482,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("pythonInclude", s:cyan, "", "")
     call <SID>X("pythonDecoratorName", s:red, "", "")
     call <SID>X("pythonFunction", s:foreground, "", "bold")
-    "call <SID>X("pythonSelf", s:orange, "", "")
+    call <SID>X("pythonSelf", s:steel, "", "")
 
 
 	" JavaScript Highlighting
