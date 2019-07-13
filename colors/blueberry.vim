@@ -4,7 +4,7 @@
 "
 " Hex colour conversion functions borrowed from the theme "Desert256""
 
-let s:contrast=""
+let s:contrast="high"
 
 
 " Console 256 Colours
@@ -25,7 +25,7 @@ if &background == "light"
     let s:background2 = "c7c0bc"
     "let s:blue = "3040a0"
     let s:blue = "3038a8"
-    let s:brown = "785040"
+    let s:brown = "683020"
     "let s:comment = "737163"
     let s:comment = "506070"
     let s:cyan = "006060"
@@ -51,8 +51,10 @@ else
     " Blueberry dark
 
     if s:contrast == "high"
-        let s:background = "282828"
-        let s:background2 = "303030"
+        let s:background = "202020"
+        let s:background2 = "282828"
+        "let s:background = "282828"
+        "let s:background2 = "303030"
     elseif s:contrast == "low"
 
     else
@@ -61,7 +63,7 @@ else
     endif
 
     let s:blue = "6890d8"
-    let s:brown = "906050"
+    let s:brown = "986858"
     let s:comment = "707070"
     let s:cyan = "55a0b0"
     let s:foreground = "a0a0a0"
@@ -310,7 +312,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Comment", s:comment, "", "")
 	call <SID>X("Conditional", s:blue, "", "none")
 	call <SID>X("Constant", s:purple, "", "")
-	call <SID>X("Define", s:grey2, "", "none")
+	call <SID>X("Define", s:brown, "", "none")
 	call <SID>X("Directory", s:blue, "", "")
 	call <SID>X("FoldColumn", "", s:background, "")
 	call <SID>X("Folded", s:comment, s:background, "")
@@ -349,16 +351,15 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 
     if &background == "light"
-        call <SID>X("CtrlPMatch", "ffffff", "", "")
+        call <SID>X("CtrlPMatch", s:red, "", "")
         call <SID>X("DiffAdd", "00ffff", s:grey2, "")
         call <SID>X("FoldColumn", "", s:background, "")
         call <SID>X("LineNr", s:grey2, s:background2, "")
         call <SID>X("MatchParen", "ff5010", "202020", "")
         "call <SID>X("Search", s:foreground, s:window, "")
         call <SID>X("Search", "000000", "b7b0bc", "")
-        call <SID>X("StatusLine", "3f683f", "e7e0cc", "reverse")
+        call <SID>X("StatusLine", "385f44", "efe8e0", "reverse")
         call <SID>X("StatusLineNC", s:grey1, s:background, "")
-        "call <SID>X("StatusLineNC", s:red, s:background, "")
         call <SID>X("StatusLineTerm", s:background, "3f683f", "")
         call <SID>X("StatusLineTermNC", "d0d0d0", "484848", "")
         "call <SID>X("Title", "2f7fa7", "", "")
@@ -380,10 +381,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         call <SID>X("CursorLine", "e0e0e0", "505050", "none")          " ctrl-p selection etc
         call <SID>X("CursorLineNr", "df5060", "505050", "none")
         call <SID>X("FoldColumn", s:cyan, s:background, "")
-        call <SID>X("LineNr", "606060", "323232", "")
+        "call <SID>X("LineNr", "606060", "323232", "")
+        call <SID>X("LineNr", "606060", s:background2, "")
         call <SID>X("MatchParen", "ff5010", "202020", "")
         call <SID>X("Search", "b8b8b8", "404060", "")
-        call <SID>X("StatusLine", "4f7858", "f0e0d0", "reverse,bold")
+        call <SID>X("StatusLine", "2f5840", "f0e0d0", "reverse")
         call <SID>X("StatusLineNC", "484848", "c0c0c0", "")
         call <SID>X("StatusLineTerm", "000000", "4f7858", "")
         call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
@@ -526,7 +528,6 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("rustModPathSep",   s:steel, "", "")
     call <SID>X("rustMacro", s:red, "", "")
 
-
 	" Diff Highlighting
 	call <SID>X("diffAdded", s:green, "", "")
 	call <SID>X("diffRemoved", s:red, "", "")
@@ -549,6 +550,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("xmlEndTag", s:steel, "", "none")
     call <SID>X("xmlEntity", s:purple, "", "none")
     call <SID>X("xmlDocTypeKeyword", s:violet, "", "none")
+
+    " Cucumber Highlighting
+	call <SID>X("cucumberScenario", s:green, "", "")
+	call <SID>X("cucumberGiven", s:blue, "", "")
+	call <SID>X("cucumberWhen", s:blue, "", "")
+	call <SID>X("cucumberWhenAnd", s:blue, "", "")
 
 	" Delete Functions
 	delf <SID>X
