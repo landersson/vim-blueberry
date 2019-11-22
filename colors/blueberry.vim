@@ -42,7 +42,7 @@ if &background == "light"
     let s:red = "981010"
     let s:selection = "959eaa"
     let s:steel = "204888"
-    let s:violet = "a02050"
+    let s:violet = "902060"
     let s:window = "a0a0a0"
     let s:yellow = "905000"
 else
@@ -358,7 +358,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         call <SID>X("MatchParen", "ff5010", "202020", "")
         "call <SID>X("Search", s:foreground, s:window, "")
         call <SID>X("Search", "000000", "b7b0bc", "")
-        call <SID>X("StatusLine", "385f44", "efe8e0", "reverse")
+        call <SID>X("StatusLine", "3c6848", "efe8e0", "reverse")
         call <SID>X("StatusLineNC", s:grey1, s:background, "")
         call <SID>X("StatusLineTerm", s:background, "3f683f", "")
         call <SID>X("StatusLineTermNC", "d0d0d0", "484848", "")
@@ -385,7 +385,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         call <SID>X("LineNr", "606060", s:background2, "")
         call <SID>X("MatchParen", "ff5010", "202020", "")
         call <SID>X("Search", "b8b8b8", "404060", "")
-        call <SID>X("StatusLine", "2f5840", "f0e0d0", "reverse")
+        call <SID>X("StatusLine", "2f5840", "e0d8c8", "reverse")
         call <SID>X("StatusLineNC", "484848", "c0c0c0", "")
         call <SID>X("StatusLineTerm", "000000", "4f7858", "")
         call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
@@ -523,7 +523,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     hi link rustString String
     hi link rustCommentLineDoc Comment
 
-    call <SID>X("rustEnumVariant", s:grey1, "", "")
+    call <SID>X("rustEnumVariant", s:purple, "", "")
+    call <SID>X("rustSigil", s:red, "", "")
     call <SID>X("rustFuncName", s:foreground, "", "bold")
     call <SID>X("rustModPathSep",   s:steel, "", "")
     call <SID>X("rustMacro", s:red, "", "")
