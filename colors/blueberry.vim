@@ -460,6 +460,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" Python Highlighting
     call <SID>X("pythonOperator", s:blue, "", "")
+    call <SID>X("pythonSpaceError", s:background, "", "")
 	"call <SID>X("pythonAttribute", s:steel, "", "")
 	"call <SID>X("PythonStatement", "8090ff", "", "")
 	"call <SID>X("pythonConditional", "8090ff", "", "")
@@ -546,6 +547,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     "call <SID>X("ShowMarksHLm", s:aqua, s:background, "none")
 
     hi link markdownError Normal
+    hi link dtsReference Type
 
     call <SID>X("xmlTagName", s:steel, "", "none")
     call <SID>X("xmlEndTag", s:steel, "", "none")
