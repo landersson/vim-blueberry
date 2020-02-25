@@ -21,7 +21,7 @@ if &background == "light"
 
     " Blueberry light
 
-    let s:background = "d7d0cc"
+    let s:background = "d0c8c4"
     let s:background2 = "c7c0bc"
     "let s:blue = "3040a0"
     let s:blue = "3038a8"
@@ -439,7 +439,9 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     hi link cppStructure Structure
     hi link cppType Type
 
-    hi clear cppModifier
+	call <SID>X("cppSTLNamespace", s:steel, "", "none")
+	call <SID>X("AngleBracketContents", s:purple, "", "none")
+	call <SID>X("cCustomAngleBrackets", s:steel, "", "none")
     
 
 	""call <SID>X("cCppOutElse", "ffc8c8", "", "")
@@ -455,7 +457,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("cStorageClass", s:purple, "", "")
     call <SID>X("cppCast", s:red, "", "")
     call <SID>X("cppExceptions", s:violet, "", "")
-    call <SID>X("cppModifier", s:foreground, "", "")
+    call <SID>X("cppModifier", s:steel, "", "")
 
 
 	" Python Highlighting
