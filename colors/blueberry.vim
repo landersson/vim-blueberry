@@ -21,7 +21,7 @@ if &background == "light"
 
     " Blueberry light
 
-    let s:background = "d7d0cc"
+    let s:background = "d0c8c4"
     let s:background2 = "c7c0bc"
     "let s:blue = "3040a0"
     let s:blue = "3038a8"
@@ -51,8 +51,10 @@ else
     " Blueberry dark
 
     if s:contrast == "high"
-        let s:background = "202020"
-        let s:background2 = "282828"
+        let s:background = "1a1e22"
+        let s:background2 = "24282c"
+        "let s:background = "202020"
+        "let s:background2 = "282828"
         "let s:background = "282828"
         "let s:background2 = "303030"
     elseif s:contrast == "low"
@@ -65,10 +67,10 @@ else
     let s:blue = "6890d8"
     let s:brown = "986858"
     let s:comment = "707070"
-    let s:cyan = "55a0b0"
+    let s:cyan = "65a0b0"
     let s:foreground = "a0a0a0"
     let s:foreground2 = "b8b8b8"
-    let s:green = "609070"
+    let s:green = "689878"
     let s:grey1 = "909090"
     let s:grey2 = "808080"
     let s:line = "a12d00"
@@ -387,6 +389,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         call <SID>X("Search", "b8b8b8", "404060", "")
         call <SID>X("StatusLine", "2f5840", "e0d8c8", "reverse")
         call <SID>X("StatusLineNC", "484848", "c0c0c0", "")
+        "call <SID>X("StatusLine", "285040", "d0d0d0", "reverse")
+        "call <SID>X("StatusLineNC", "383838", "b0b0b0", "")
         call <SID>X("StatusLineTerm", "000000", "4f7858", "")
         call <SID>X("StatusLineTermNC", "c0c0c0", "484848", "")
         call <SID>X("Title", s:cyan, "", "")
@@ -439,23 +443,25 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     hi link cppStructure Structure
     hi link cppType Type
 
-    hi clear cppModifier
+	call <SID>X("cppSTLNamespace", s:steel, "", "none")
+	call <SID>X("AngleBracketContents", s:purple, "", "none")
+	call <SID>X("cCustomAngleBrackets", s:steel, "", "none")
     
 
 	""call <SID>X("cCppOutElse", "ffc8c8", "", "")
-    "call <SID>X("cCustomClass", "909090", "", "")
     "call <SID>X("cFormat", "90bf90", "", "")
     "call <SID>X("cLabel", s:foreground2, "", "")
     "call <SID>X("cSpecial", "90bf90", "", "")
     call <SID>X("cBlock", "ffff00", "", "")
     call <SID>X("cBracket", "ffff00", "", "")
-    call <SID>X("cCustomClass", s:grey1, "", "")
+    call <SID>X("cCustomFunc", s:steel, "", "")
+    call <SID>X("cCustomClass", s:grey2, "", "")
     call <SID>X("cCustomScope", s:grey2, "", "")
     call <SID>X("cPreCondit", s:red, "", "")
     call <SID>X("cStorageClass", s:purple, "", "")
     call <SID>X("cppCast", s:red, "", "")
     call <SID>X("cppExceptions", s:violet, "", "")
-    call <SID>X("cppModifier", s:foreground, "", "")
+    call <SID>X("cppModifier", s:steel, "", "")
 
 
 	" Python Highlighting
@@ -512,6 +518,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" CoffeeScript Highlighting
 	call <SID>X("coffeeKeyword", s:purple, "", "")
 	call <SID>X("coffeeConditional", s:purple, "", "")
+
+	" Shellscript Highlighting
+	call <SID>X("shDerefVar", s:foreground, "", "")
+	call <SID>X("shDerefSimple", s:cyan, "", "")
 
     "hi link rustMacro Normal
     hi link rustDecNumber Number
