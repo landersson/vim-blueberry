@@ -67,7 +67,7 @@ else
     let s:blue = "6890d8"
     let s:brown = "986858"
     let s:comment = "707070"
-    let s:cyan = "55a0b0"
+    let s:cyan = "65a0b0"
     let s:foreground = "a0a0a0"
     let s:foreground2 = "b8b8b8"
     let s:green = "689878"
@@ -447,13 +447,13 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     
 
 	""call <SID>X("cCppOutElse", "ffc8c8", "", "")
-    call <SID>X("cCustomClass", "f09090", "", "")
     "call <SID>X("cFormat", "90bf90", "", "")
     "call <SID>X("cLabel", s:foreground2, "", "")
     "call <SID>X("cSpecial", "90bf90", "", "")
     call <SID>X("cBlock", "ffff00", "", "")
     call <SID>X("cBracket", "ffff00", "", "")
-    call <SID>X("cCustomClass", s:steel, "", "")
+    call <SID>X("cCustomFunc", s:steel, "", "")
+    call <SID>X("cCustomClass", s:grey2, "", "")
     call <SID>X("cCustomScope", s:grey2, "", "")
     call <SID>X("cPreCondit", s:red, "", "")
     call <SID>X("cStorageClass", s:purple, "", "")
@@ -516,6 +516,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" CoffeeScript Highlighting
 	call <SID>X("coffeeKeyword", s:purple, "", "")
 	call <SID>X("coffeeConditional", s:purple, "", "")
+
+	" Shellscript Highlighting
+	call <SID>X("shDerefVar", s:foreground, "", "")
+	call <SID>X("shDerefSimple", s:cyan, "", "")
 
     "hi link rustMacro Normal
     hi link rustDecNumber Number
