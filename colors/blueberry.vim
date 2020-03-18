@@ -42,7 +42,7 @@ if &background == "light"
     let s:red = "981010"
     let s:selection = "959eaa"
     let s:steel = "184464"
-    let s:violet = "902060"
+    let s:violet = "802850"
     let s:window = "a0a0a0"
     let s:yellow = "905000"
 else
@@ -79,7 +79,7 @@ else
     let s:red = "bf5848"
     let s:selection = "405060"
     let s:steel = "8898b8"
-    let s:violet = "c06888"
+    let s:violet = "b87898"
     let s:window = "404040"
     let s:yellow = "d0a654"
 endif
