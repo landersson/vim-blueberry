@@ -72,7 +72,7 @@ else
     let s:foreground2 = "b8b8b8"
     let s:green = "689878"
     let s:grey1 = "909090"
-    let s:grey2 = "808080"
+    let s:grey2 = "788890"
     let s:line = "a12d00"
     let s:orange = "ee835f"
     let s:purple = "a088d0"
@@ -347,6 +347,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("WildMenu", s:background, s:orange, "bold")
     call <SID>X("MoreMsg", s:grey1, "", "")
     call <SID>X("Question", s:grey1, "", "")
+    call <SID>X("Error", s:red, s:background, "bold")
     call <SID>X("ErrorMsg", s:red, s:background, "bold")
     call <SID>X("ModeMsg", s:violet, "", "")
     call <SID>X("Underlined", s:blue, "", "")
@@ -455,13 +456,20 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("cBlock", "ffff00", "", "")
     call <SID>X("cBracket", "ffff00", "", "")
     call <SID>X("cCustomFunc", s:steel, "", "")
+if &background == "light"
     call <SID>X("cCustomClass", s:violet, "", "")
+else
+    call <SID>X("cCustomClass", s:grey2, "", "")
+endif
+    "call <SID>X("cCustomScope", s:grey2, "", "")
+
     call <SID>X("cCustomScope", s:grey2, "", "")
     call <SID>X("cPreCondit", s:red, "", "")
     call <SID>X("cStorageClass", s:purple, "", "")
     call <SID>X("cppCast", s:red, "", "")
     call <SID>X("cppExceptions", s:violet, "", "")
     call <SID>X("cppModifier", s:steel, "", "")
+    call <SID>X("cppModifier", s:foreground, "", "")
 
 
 	" Python Highlighting
@@ -520,6 +528,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("coffeeConditional", s:purple, "", "")
 
 	" Shellscript Highlighting
+	call <SID>X("shStatement", s:steel, "", "")
 	call <SID>X("shDerefVar", s:foreground, "", "")
 	call <SID>X("shDerefSimple", s:cyan, "", "")
 
@@ -569,6 +578,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("cucumberGiven", s:blue, "", "")
 	call <SID>X("cucumberWhen", s:blue, "", "")
 	call <SID>X("cucumberWhenAnd", s:blue, "", "")
+
+    hi link ALEError SpellBad
+    hi link ALEWarning SpellBad
+    hi link ALEErrorSign Error
+    hi link ALEWarningSign WarningMsg
+    hi link ALEVirtualTextError Error
 
 	" Delete Functions
 	delf <SID>X
