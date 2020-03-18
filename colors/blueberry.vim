@@ -24,11 +24,11 @@ if &background == "light"
     let s:background = "d0c8c4"
     let s:background2 = "c7c0bc"
     "let s:blue = "3040a0"
-    let s:blue = "3038a8"
+    let s:blue = "322ca8"
     let s:brown = "683020"
     "let s:comment = "737163"
     let s:comment = "506070"
-    let s:cyan = "006060"
+    let s:cyan = "006058"
     let s:foreground = "2c2a2c"
     "let s:foreground = "363436"
     let s:foreground2 = "161416"
@@ -41,7 +41,7 @@ if &background == "light"
     let s:purple = "78288e"
     let s:red = "981010"
     let s:selection = "959eaa"
-    let s:steel = "204888"
+    let s:steel = "184464"
     let s:violet = "902060"
     let s:window = "a0a0a0"
     let s:yellow = "905000"
@@ -455,7 +455,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("cBlock", "ffff00", "", "")
     call <SID>X("cBracket", "ffff00", "", "")
     call <SID>X("cCustomFunc", s:steel, "", "")
-    call <SID>X("cCustomClass", s:grey2, "", "")
+    call <SID>X("cCustomClass", s:violet, "", "")
     call <SID>X("cCustomScope", s:grey2, "", "")
     call <SID>X("cPreCondit", s:red, "", "")
     call <SID>X("cStorageClass", s:purple, "", "")
